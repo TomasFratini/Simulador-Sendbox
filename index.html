@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <title>Simulador Sendbox</title>
+</head>
+<body>
+    
+    <head>
+     
+        <div>
+            <img src="./Img/logo.png" alt="">
+        </div>
+
+    </head>
+    
+    <hr>
+
+    
+    <div id="titulo">
+        <h1>Cotizador Online</h1>
+    </div>
+    <main id="cotizador">
+        <div>
+            <form id="formulario" target="blank" >
+                <input  class="campo" id="origen" type="text" placeholder="Origen" required>
+                <input class="campo" id="destino"  type="text" placeholder="Destino" required>
+                <input class="campo" id="largo" type="number" placeholder="Largo (cm)" required>
+                <input class="campo" id="ancho" type="number" placeholder="Ancho (cm)" required>
+                <input class="campo" id="alto" type="number" placeholder="Alto (cm)" required>
+                <input class="button" id="btn" type="submit" value="Cotizar presupuesto">
+            </form>
+        </div>
+        
+        <div id="resultado">
+            
+            
+        </div>
+    </main>
+    
+    
+    <div  class="destinos"> 
+        <h2 class="titulo2">Destinos Disponibles</h2>
+        
+    </div>
+
+
+    <script src="./main.js"></script>
+</body>
+</html>
