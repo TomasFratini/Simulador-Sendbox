@@ -42,22 +42,26 @@ const posiblesEnvios = [
 
 // Funciones
 
-function enviarPresupuesto(e) {
-    resultado.innerHTML = "";
-    e.preventDefault();
-
+function getValues() {
     const origen = document.querySelector('#origen').value;
     const destino = document.querySelector('#destino').value;
     const largo = document.querySelector('#largo').value;
     const ancho = document.querySelector('#ancho').value;
     const alto = document.querySelector('#alto').value;
 
+    return {origen, destino, largo, ancho, alto};
+}
+
+function enviarPresupuesto(e) {
+    resultado.innerHTML = "";
+    e.preventDefault();
+
+    const {origen, destino, largo, ancho, alto} = getValues();
+
     const aforo = (parseInt(largo) * parseInt(ancho) * parseInt(alto))/CONSTANTE;
     const precio = aforo * PEXCEDENTE;
 
     mostrar(origen, destino, aforo, precio);
-
-    
 }
 
 function mostrar(origen, destino, aforo, precio) {
@@ -84,14 +88,14 @@ function mostrar(origen, destino, aforo, precio) {
         </div>
     `
     
-    resultado.appendChild(info)
+    resultado.appendChild(info);
         
     reset();
 
 }
 
 function reset() {
-    document.querySelector("#formulario").reset()
+    document.querySelector("#formulario").reset();
 }
 
 function mostrarDestinos() { 
@@ -113,3 +117,38 @@ for ( const item of puntosSendbox) {
 document.addEventListener('DOMContentLoaded', () => {
     mostrarDestinos();
 })
+
+
+// localStorage
+
+const guardarLocal = (clave, valor) => {localStorage.setItem(clave, valor);
+
+};
+
+guardarLocal("posiblesDestinos", JSON.stringify(posiblesEnvios));
+
+// Pruebas
+
+const OrigenCordoba = posiblesEnvios.filter(posiblesEnvios => posiblesEnvios.origen == "Cordoba");
+
+const OrigenBuenosAires = posiblesEnvios.filter(posiblesEnvios => posiblesEnvios.origen == "Buenos Aires");
+
+const OrigenMendoza = posiblesEnvios.filter(posiblesEnvios => posiblesEnvios.origen == "Mendoza");
+
+const OrigenRosario = posiblesEnvios.filter(posiblesEnvios => posiblesEnvios.origen == "Rosario");
+
+const OrigenSanLuis = posiblesEnvios.filter(posiblesEnvios => posiblesEnvios.origen == "San Luis");
+
+const DestinoBuenosAires = posiblesEnvios.filter(posiblesEnvios => posiblesEnvios.destino == "Buenos Aires");
+
+const DestinoMendoza = posiblesEnvios.filter(posiblesEnvios => posiblesEnvios.destino == "Mendoza");
+
+const DestinoRosario = posiblesEnvios.filter(posiblesEnvios => posiblesEnvios.destino == "Rosario");
+
+const DestinoSantaFe = posiblesEnvios.filter(posiblesEnvios => posiblesEnvios.destino == "Santa Fe");
+
+const DestinoSanLuis = posiblesEnvios.filter(posiblesEnvios => posiblesEnvios.destino == "San Luis");
+
+
+
+
