@@ -1,3 +1,12 @@
+Swal.fire({
+    title: 'Bienvenido a Sendbox',
+    text: 'A continuacion realize su propio presupuesto',
+    imageUrl: './img/sendbox.png',
+    imageWidth: 400,
+    imageHeight: 200,
+    imageAlt: 'Custom image',
+  })
+
 // Variables
 
 const CONSTANTE= 5000;
