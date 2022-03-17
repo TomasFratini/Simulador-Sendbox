@@ -1,0 +1,8 @@
+[
+      {"id": 1, "nombre": "Cordoba" },
+      {"id": 2, "nombre": "Buenos Aires"},
+      {"id": 3, "nombre": "Mendoza"},
+      {"id": 4, "nombre": "San Luis"},
+      {"id": 5, "nombre": "Santa Fe"},
+      {"id": 6, "nombre": "Rosario"}
+]

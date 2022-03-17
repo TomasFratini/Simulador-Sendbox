@@ -5,48 +5,37 @@ Swal.fire({
     imageWidth: 400,
     imageHeight: 200,
     imageAlt: 'Custom image',
-  })
+})
+
+// Objeto
+  
+  
+const posiblesEnvios = [
+      {id: 1, origen: "Cordoba", destino: "Buenos Aires", precio1: 635, precio2: 909},
+      {id: 2, origen: "Cordoba", destino: "Mendoza", precio1: 635, precio2: 909},
+      {id: 3, origen: "Cordoba", destino: "Rosario", precio1: 478, precio2: 776},
+      {id: 4, origen: "Cordoba", destino: "San Luis", precio1: 452, precio2: 678},
+      {id: 5, origen: "Cordoba", destino: "Santa Fe", precio1: 635, precio2: 893},
+      {id: 6, origen: "Buenos Aires", destino: "Mendoza", precio1: 659, precio2: 959},
+      {id: 7, origen: "Buenos Aires", destino: "Rosario", precio1: 635, precio2: 909},
+      {id: 8, origen: "Buenos Aires", destino: "San Luis", precio1: 635, precio2: 909},
+      {id: 9, origen: "Buenos Aires", destino: "Santa Fe", precio1: 635, precio2: 909},
+      {id: 10, origen: "Mendoza", destino: "Rosario", precio1: 635, precio2: 909},
+      {id: 11, origen: "Mendoza", destino: "San Luis", precio1: 416, precio2: 678},
+      {id: 12, origen: "Mendoza", destino: "Santa Fe", precio1: 704, precio2: 1009},
+      {id: 13, origen: "Rosario", destino: "San Luis", precio1: 635, precio2: 909},
+      {id: 14, origen: "Rosario", destino: "Santa Fe", precio1: 465, precio2: 827},
+      {id: 15, origen: "San Luis", destino: "Santa Fe", precio1: 704, precio2: 1009} 
+];
 
 // Variables
 
 const CONSTANTE= 5000;
 const PEXCEDENTE = 25;
+const lista = document.querySelector(".destinos")
 
 const formulario = document.querySelector("#formulario");
 formulario.addEventListener('submit', enviarPresupuesto);
-
-
-const destinos = document.querySelector(".destinos");
-
-// Objetos
-
-const puntosSendbox = [
-    {nombre: "Cordoba" },
-    {nombre: "Buenos Aires"},
-    {nombre: "Mendoza"},
-    {nombre: "San Luis"},
-    {nombre: "Santa Fe"},
-    {nombre: "Rosario"}
-]
-
-const posiblesEnvios = [
-    {id: 1, origen: "Cordoba", destino: "Buenos Aires", precio1: 635, precio2: 909},
-    {id: 2, origen: "Cordoba", destino: "Mendoza", precio1: 635, precio2: 909},
-    {id: 3, origen: "Cordoba", destino: "Rosario", precio1: 478, precio2: 776},
-    {id: 4, origen: "Cordoba", destino: "San Luis", precio1: 452, precio2: 678},
-    {id: 5, origen: "Cordoba", destino: "Santa Fe", precio1: 635, precio2: 893},
-    {id: 6, origen: "Buenos Aires", destino: "Mendoza", precio1: 659, precio2: 959},
-    {id: 7, origen: "Buenos Aires", destino: "Rosario", precio1: 635, precio2: 909},
-    {id: 8, origen: "Buenos Aires", destino: "San Luis", precio1: 635, precio2: 909},
-    {id: 9, origen: "Buenos Aires", destino: "Santa Fe", precio1: 635, precio2: 909},
-    {id: 10, origen: "Mendoza", destino: "Rosario", precio1: 635, precio2: 909},
-    {id: 11, origen: "Mendoza", destino: "San Luis", precio1: 416, precio2: 678},
-    {id: 12, origen: "Mendoza", destino: "Santa Fe", precio1: 704, precio2: 1009},
-    {id: 13, origen: "Rosario", destino: "San Luis", precio1: 635, precio2: 909},
-    {id: 14, origen: "Rosario", destino: "Santa Fe", precio1: 465, precio2: 827},
-    {id: 15, origen: "San Luis", destino: "Santa Fe", precio1: 704, precio2: 1009} 
-];
-
 
 
 // Funciones
@@ -107,25 +96,31 @@ function reset() {
     document.querySelector("#formulario").reset();
 }
 
-function mostrarDestinos() { 
-for ( const item of puntosSendbox) {
-    const divDestinos = document.createElement('div');
-    divDestinos.classList.add('listado-destinos');
-    
-    const pDestinos = document.createElement('p');
-    pDestinos.textContent = item.nombre;
-    
-    divDestinos.appendChild(pDestinos);
 
-    destinos.appendChild(divDestinos);
-}}
 
+// Fetch
+
+fetch("/data.json")
+    .then((res) => res.json ())
+    .then((data) => {
+        
+        data.forEach((destinos) => {
+            const divDestinos = document.createElement("div")
+            divDestinos.classList.add('listado-destinos');
+            divDestinos.innerHTML = `
+                <ul class="lista"> 
+                    <li>${destinos.nombre}</li>
+                </ul>
+            `
+            
+            lista.append(divDestinos)
+
+        })
+            
+    })
 
 // Eventos
 
-document.addEventListener('DOMContentLoaded', () => {
-    mostrarDestinos();
-})
 
 
 // localStorage
@@ -157,7 +152,6 @@ const DestinoRosario = posiblesEnvios.filter(posiblesEnvios => posiblesEnvios.de
 const DestinoSantaFe = posiblesEnvios.filter(posiblesEnvios => posiblesEnvios.destino == "Santa Fe");
 
 const DestinoSanLuis = posiblesEnvios.filter(posiblesEnvios => posiblesEnvios.destino == "San Luis");
-
 
 
 
