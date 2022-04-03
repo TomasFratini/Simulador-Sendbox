@@ -1,7 +1,7 @@
 Swal.fire({
     title: 'Bienvenido a Sendbox',
     text: 'A continuacion realize su propio presupuesto',
-    imageUrl: './img/sendbox.png',
+    imageUrl: './Img/sendbox.png',
     imageWidth: 400,
     imageHeight: 200,
     imageAlt: 'Custom image',
@@ -106,7 +106,7 @@ function reset() {
 
 // Fetch
 
-fetch("/data.json")
+fetch("../data.json")
     .then((res) => res.json ())
     .then((data) => {
         
