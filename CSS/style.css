@@ -4,7 +4,7 @@
 }
 
 #titulo{
-    padding-left: 300px;
+    padding-left: 250px;
     display: inline-block;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -13,35 +13,15 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    gap: 35px;
+    gap: 20px;
     padding-left: 50px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.campo{
-    height: 30px;
-    width: 400px;
-    border: solid 2px black;
-    border-radius: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.button{
-    height: 30px;
-    width: 150px;
-    border: solid 2px black;
-    border-radius: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.button:hover{
-    background-color: gray;
-}
-
 .titulo2{
-    font-size: 30px;
-    margin: 0%;
-    
+    font-size: 25px;
+    margin-top: 15px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .destinos{
@@ -49,29 +29,21 @@
     flex-direction: row;
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 30px;
+    margin-bottom: 10px;
     align-items: center;
     justify-content: center;
     border: 2px solid black;
-    border-radius: 15px;
-    
-}
-
-.listado-destinos {
-    font-size: 20px;
-    padding-left: 50px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: red;
+    border-radius: 10px;
     
 }
 
 #resultado {
     font-family: Arial, Helvetica, sans-serif;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding-left: 100px;
+    border: 2px solid black;
+    border-radius: 30px;
+    padding-left: 80px;
     height: 450px;
-    width: 400px;
-    background-color: lightcoral;
+    width: 450px;
     
 }
 
@@ -86,5 +58,35 @@
     list-style: none;
     display: flex;
     color: black;
-    font-size: 25px;
+    font-size: 20px;
+}
+
+#cotizador{
+    display: flex;
+    justify-content: space-around;
+}
+
+#origen {
+    width: 350px;
+    display: inline-block;
+}
+
+#destino {
+    width: 350px;
+    display: inline-block;
+}
+
+#largo {
+    width: 350px;
+    display: inline-block;
+}
+
+#ancho {
+    width: 350px;
+    display: inline-block;
+}
+
+#alto {
+    width: 350px;
+    display: inline-block;
 }
