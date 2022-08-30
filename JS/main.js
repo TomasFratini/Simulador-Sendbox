@@ -51,20 +51,20 @@ function enviarPresupuesto(e) {
     const {origen0, destino0, largo, ancho, alto, excedente } = cotizarPresupuesto();
     
     const aforo = (parseInt(largo) * parseInt(ancho) * parseInt(alto))/CONSTANTE
-    let precio  ;
 
-    posiblesEnvios.forEach(envio=>{
+    posiblesEnvios.map(envio=>{
 
         if (aforo <= 6 && envio.origen === origen0 && envio.destino=== destino0   ) {
-           return precio = 635;
+           return precio = envio.precio1;
         } else if (7<= aforo <= 21 && envio.origen=== origen0 && envio.destino=== destino0) {
-           return precio = 909;
-        }  
+           return precio = envio.precio2;
+        } 
     })
     
-    if (22<= aforo) {
-        precio = 909 +((aforo-21)*excedente);
-    }
+    
+    if  (22<= aforo) {
+         precio = 909 + ((aforo-21)*excedente);
+    } 
 
     mostrar(origen0, destino0, aforo, precio)
 }
