@@ -58,9 +58,10 @@ function enviarPresupuesto(e) {
            return precio = envio.precio1;
         } else if (7<= aforo <= 21 && envio.origen=== origen0 && envio.destino=== destino0) {
            return precio = envio.precio2;
-        } 
+        } else if (envio.origen === envio.destino === origen0 === destino0) {
+            return precio= 0
+        }
     })
-    
     
     if  (22<= aforo) {
          precio = 909 + ((aforo-21)*excedente);
@@ -74,7 +75,14 @@ function mostrar(origen0, destino0, aforo, precio) {
     const resultado = document.querySelector('#resultado');
     const info = document.createElement('div');
 
-    info.innerHTML = `
+    if (origen0 === destino0) {
+        Swal.fire({
+            title: 'Error',
+            text: 'Ingrese un origen y destino valido.',
+
+        }) 
+    } else {
+        info.innerHTML = `
         <div class="listado" 
             <div class="listado">
                 <p>El origen de su envio es: ${origen0} </p>
@@ -92,7 +100,10 @@ function mostrar(origen0, destino0, aforo, precio) {
                 <p> Todas las tarifas corresponden solamente al servicio de flete, no icluyen ni entrega a domicilio, ni IVA. </p>
             </div>
         </div>
-    `
+    ` 
+    }
+
+    
     
     resultado.appendChild(info);
         
@@ -104,22 +115,3 @@ function reset() {
 }
 
 
-// Fetch
-
-fetch("../data.json")
-    .then((res) => res.json ())
-    .then((data) => {
-        
-        data.forEach((destinos) => {
-            const divDestinos = document.createElement("div");
-            divDestinos.innerHTML = `
-                <ul class="lista"> 
-                    <li>${destinos.nombre}</li>
-                </ul>
-            `;
-            
-            lista.append(divDestinos);
-
-        });
-            
-    })
